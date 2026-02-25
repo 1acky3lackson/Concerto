@@ -1,0 +1,38 @@
+plugins {
+	id 'fabric-loom'
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    implementation project(":common")
+    include project(":common")
+
+    // Include libraries that are used by common, so they are available at runtime in the mod jar
+    include 'com.google.zxing:core:3.3.0'
+    include('com.googlecode.soundlibs:mp3spi:1.9.5.4') {
+        exclude group: 'com.googlecode.soundlibs', module: 'tritonus-share'
+    }
+    include 'com.github.GregTaoo:JustFLAC:85f0934435'
+    include 'com.github.trilarion:vorbis-support:1.1.0'
+    include('com.googlecode.soundlibs:tritonus-all:0.3.7.2') {
+        exclude group: 'com.googlecode.soundlibs', module: 'tritonus-share'
+    }
+    include 'net.jthink:jaudiotagger:3.0.1'
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}

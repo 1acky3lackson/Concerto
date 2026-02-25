@@ -12,3 +12,9 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+include 'common'
+include 'fabric'
+include 'bukkit'
+
+rootProject.name = 'concerto-root'
