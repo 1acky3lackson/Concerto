@@ -1,0 +1,10 @@
+name: Concerto
+version: 1.5.0-mc1.21
+main: top.gregtao.concerto.BukkitConcertoPlugin
+api-version: 1.21
+authors: [ GregTao ]
+description: A Bukkit implementation of the Concerto music mod server features.
+commands:
+  concerto:
+    description: Main command for Concerto
+    usage: /concerto
